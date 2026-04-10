@@ -1,11 +1,9 @@
 {
 	"format_version": "1.9.0",
 	"credit": "Made with Blockbench",
-	"parent": "wooden_hammer",
-	"texture_size": [32, 32],
 	"textures": {
-		"0": "Downloads:wooden_hammer",
-		"particle": "Downloads:wooden_hammer"
+		"0": "more_utilities:item/wooden_hammer",
+		"particle": "more_utilities:item/wooden_hammer"
 	},
 	"elements": [
 		{

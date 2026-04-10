@@ -27,6 +27,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import net.minecraft.client.gui.screens.MenuScreens;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -43,13 +44,23 @@ public class utilities {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
     // Create a Deferred Register to hold CreativeModeTabs which will all be registered under the "more_utilities" namespace
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
+    // Create a Deferred Register to hold MenuTypes
+    public static final DeferredRegister<net.minecraft.world.inventory.MenuType<?>> MENUS = DeferredRegister.create(ForgeRegistries.MENU_TYPES, MODID);
 
+    public static final RegistryObject<Block> FORGE = BLOCKS.register("forge", () -> new ForgeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(5.0f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Item> FORGE_ITEM = ITEMS.register("forge", () -> new BlockItem(FORGE.get(), new Item.Properties()));
+
+    public static final RegistryObject<net.minecraft.world.inventory.MenuType<ForgeMenu>> FORGE_MENU = MENUS.register("forge", () -> net.minecraftforge.common.extensions.IForgeMenuType.create(ForgeMenu::new));
 
     // Creates a creative tab with the id "more_utilities:example_tab" for the example item, that is placed after the combat tab
     public static final RegistryObject<CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder().withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> ModHammers.STONE_HAMMER.get().getDefaultInstance()).displayItems((parameters, output) -> {
         output.accept(ModHammers.WOODEN_HAMMER.get());
         output.accept(ModHammers.STONE_HAMMER.get());
-        output.accept(ModHammers.IRON_HAMMER.get());// Add the example item to the tab. For your own tabs, this method is preferred over the event
+        output.accept(ModHammers.IRON_HAMMER.get());
+        output.accept(ModHammers.GOLD_HAMMER.get());
+        output.accept(ModHammers.DIAMOND_HAMMER.get());
+        output.accept(ModHammers.NETHERITE_HAMMER.get());// Add the example item to the tab. For your own tabs, this method is preferred over the event
+        output.accept(FORGE_ITEM.get());
     }).build());
 
     public utilities() {
@@ -64,6 +75,8 @@ public class utilities {
         ITEMS.register(modEventBus);
         // Register the Deferred Register to the mod event bus so tabs get registered
         CREATIVE_MODE_TABS.register(modEventBus);
+        // Register the Deferred Register for Menus
+        MENUS.register(modEventBus);
 
         ModHammers.register(modEventBus);
 
@@ -86,7 +99,9 @@ public class utilities {
 
         LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
 
-        Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
+        if (Config.items != null) {
+            Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
+        }
     }
 
     // Add the example block item to the building blocks tab
@@ -110,6 +125,10 @@ public class utilities {
             // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+            
+            event.enqueueWork(() -> {
+                MenuScreens.register(FORGE_MENU.get(), ForgeScreen::new);
+            });
         }
     }
 }

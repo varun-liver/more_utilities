@@ -1,4 +1,5 @@
 {
+	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"textures": {
 		"0": "more_utilities:item/stone_hammer",
@@ -33,9 +34,7 @@
 	],
 	"display": {
 		"thirdperson_righthand": {
-			"rotation": [0, 90, 0],
-			"translation": [0, 1, 1],
-			"scale": [0.55, 0.55, 0.55]
+			"translation": [0, 1, 1]
 		},
 		"thirdperson_lefthand": {
 			"rotation": [0, 90, 0],
@@ -58,16 +57,14 @@
 		},
 		"gui": {
 			"rotation": [16, 20.5, 0],
-			"translation": [0, -2, 0],
-			"scale": [1, 4, 4]
+			"translation": [0, -2, 0]
 		},
 		"head": {
-			"rotation": [0, 180, 0],
+			"rotation": [0, -180, 0],
 			"translation": [0, 13, 7]
 		},
 		"fixed": {
-			"rotation": [0, 180, 0],
-			"translation": [0, 0, 0],
+			"rotation": [0, -180, 0],
 			"scale": [0.5, 0.5, 0.5]
 		}
 	},

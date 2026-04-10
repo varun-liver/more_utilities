@@ -28,10 +28,9 @@ public class Hammer extends PickaxeItem {
             case "wooden" -> 2;
             case "stone" -> 3;
             case "iron" -> 4;
-            case "copper" -> 5;
-            case "gold" -> 6;
-            case "diamond" -> 7;
-            case "netherite" -> 8;
+            case "gold" -> 5;
+            case "diamond" -> 6;
+            case "netherite" -> 7;
             default -> 1;
         };
     }

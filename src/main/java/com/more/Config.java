@@ -38,16 +38,21 @@ public class Config {
     public static Set<Item> items;
 
     private static boolean validateItemName(final Object obj) {
-        return obj instanceof final String itemName && ForgeRegistries.ITEMS.containsKey(new ResourceLocation(itemName));
+        return obj instanceof String;
     }
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event) {
-        logDirtBlock = LOG_DIRT_BLOCK.get();
-        magicNumber = MAGIC_NUMBER.get();
-        magicNumberIntroduction = MAGIC_NUMBER_INTRODUCTION.get();
+        if (event.getConfig().getModId().equals(utilities.MODID)) {
+            logDirtBlock = LOG_DIRT_BLOCK.get();
+            magicNumber = MAGIC_NUMBER.get();
+            magicNumberIntroduction = MAGIC_NUMBER_INTRODUCTION.get();
 
-        // convert the list of strings into a set of items
-        items = ITEM_STRINGS.get().stream().map(itemName -> ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemName))).collect(Collectors.toSet());
+            // convert the list of strings into a set of items
+            items = ITEM_STRINGS.get().stream()
+                    .map(itemName -> ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemName)))
+                    .filter(java.util.Objects::nonNull)
+                    .collect(Collectors.toSet());
+        }
     }
 }

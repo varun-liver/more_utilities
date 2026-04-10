@@ -1,0 +1,10 @@
+{
+  "item.more_utilities.wooden_hammer": "Wooden Hammer",
+  "item.more_utilities.stone_hammer": "Stone Hammer",
+  "item.more_utilities.iron_hammer": "Iron Hammer",
+  "item.more_utilities.gold_hammer": "Gold Hammer",
+  "item.more_utilities.diamond_hammer": "Diamond Hammer",
+  "item.more_utilities.netherite_hammer": "Netherite Hammer",
+  "block.more_utilities.forge": "Forge",
+  "container.more_utilities.forge": "Forge"
+}

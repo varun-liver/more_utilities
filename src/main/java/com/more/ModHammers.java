@@ -9,6 +9,9 @@ public class ModHammers {
     public static final RegistryObject<Item> WOODEN_HAMMER = ITEMS.register("wooden_hammer", () -> new Hammer(new Item.Properties(),"wooden"));
     public static final RegistryObject<Item> STONE_HAMMER = ITEMS.register("stone_hammer", () -> new Hammer(new Item.Properties(),"stone"));
     public static final RegistryObject<Item> IRON_HAMMER = ITEMS.register("iron_hammer", () -> new Hammer(new Item.Properties(),"iron"));
+    public static final RegistryObject<Item> GOLD_HAMMER = ITEMS.register("gold_hammer", () -> new Hammer(new Item.Properties(),"gold"));
+    public static final RegistryObject<Item> DIAMOND_HAMMER = ITEMS.register("diamond_hammer", () -> new Hammer(new Item.Properties(),"diamond"));
+    public static final RegistryObject<Item> NETHERITE_HAMMER = ITEMS.register("netherite_hammer", () -> new Hammer(new Item.Properties(),"netherite"));
     public static void register(IEventBus eventBus) {
         // Forces class loading
     }
