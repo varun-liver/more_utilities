@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Specification-Title: more_utilities
+Specification-Vendor: varun
+Specification-Version: 1
+Implementation-Title: more-utilities
+Implementation-Version: 1.0-SNAPSHOT
+Implementation-Vendor: varun
+Implementation-Timestamp: 2026-04-09T21:02:44-0700
+

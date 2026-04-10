@@ -1,6 +1,5 @@
 package com.more;
 
-ackage com.more;
 
 import com.more.utilities;
 import net.minecraft.resources.ResourceLocation;
