@@ -48,7 +48,8 @@ public class utilities {
     // Creates a creative tab with the id "more_utilities:example_tab" for the example item, that is placed after the combat tab
     public static final RegistryObject<CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder().withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> ModHammers.STONE_HAMMER.get().getDefaultInstance()).displayItems((parameters, output) -> {
         output.accept(ModHammers.WOODEN_HAMMER.get());
-        output.accept(ModHammers.STONE_HAMMER.get());// Add the example item to the tab. For your own tabs, this method is preferred over the event
+        output.accept(ModHammers.STONE_HAMMER.get());
+        output.accept(ModHammers.IRON_HAMMER.get());// Add the example item to the tab. For your own tabs, this method is preferred over the event
     }).build());
 
     public utilities() {
